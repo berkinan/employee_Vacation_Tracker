@@ -14,9 +14,7 @@ const LoginPage = () => {
         surname,
         email,
       });
-      console.log(response.data); // You can handle the response accordingly
-      // Redirect to the employee list page
-      // For now, let's assume the URL for the list page is '/employees'
+      console.log(response.data);
       window.location.href = '/employees';
     } catch (error) {
       console.error(error);
