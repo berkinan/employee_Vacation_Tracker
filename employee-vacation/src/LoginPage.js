@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './LoginPage.css'; // Import the CSS file here
 
 const LoginPage = () => {
   const [name, setName] = useState('');
@@ -22,9 +23,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login Page</h2>
-      <form onSubmit={handleRegister}>
+      <form className="login-form" onSubmit={handleRegister}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -51,6 +52,10 @@ const LoginPage = () => {
 
         <button type="submit">Register Employee</button>
       </form>
+      <div className="how-to">
+        <h3>How To Use</h3>
+        <p>Enter your name, surname, and email in the provided fields, then click the "Register Employee" button to create an account. Once registered, you will be redirected to the Employees page.</p>
+      </div>
     </div>
   );
 };
