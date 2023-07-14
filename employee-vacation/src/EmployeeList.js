@@ -1,5 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+`;
+
+const List = styled.ul`
+  list-style-type: none;
+  padding: 0;
+`;
+
+const ListItem = styled.li`
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+`;
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -18,16 +41,16 @@ const EmployeeList = () => {
   }, []);
 
   return (
-    <div>
+    <Container>
       <h2>Employee List</h2>
-      <ul>
+      <List>
         {employees.map((employee) => (
-          <li key={employee.id}>
+          <ListItem key={employee.id}>
             {employee.name} {employee.surname} - {employee.email}
-          </li>
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Container>
   );
 };
 
