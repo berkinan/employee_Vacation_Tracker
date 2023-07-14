@@ -1,13 +1,20 @@
 import React from 'react';
-import AppRouter from './AppRouter';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RegisterPage from './RegisterPage';
+import ListPage from './EmployeeList';
+import EditPage from './EmployeeEdit';
 
-const App = () => {
+const AppRouter = () => {
   return (
-    <div>
-      <h1>Vacation Tracker</h1>
-      <AppRouter />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/list" element={<ListPage />} />
+        <Route path="/edit/:id" element={<EditPage />} />
+        <Route path="/" element={<RegisterPage />} />
+      </Routes>
+    </Router>
   );
 };
 
-export default App;
+export default AppRouter;
