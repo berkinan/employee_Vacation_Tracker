@@ -41,7 +41,6 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('dummyEmail@example.com');
   const [error, setError] = useState(null);
   const register = () => {
-    // Here you will handle the registration process
     window.location.href = `/list`;
   };
   return (
