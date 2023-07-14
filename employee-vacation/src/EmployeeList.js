@@ -39,9 +39,8 @@ const EmployeeInfo = styled.p`
 
 
 const EmployeeList = () => {
-  const [employees, setEmployees] = useState([{id: 1, email: 'dummyEmail@example.com', daysUsed: 5, daysLeft: 15}]); // Dummy data
+  const [employees, setEmployees] = useState([{id: 1, email: 'dummyEmail@example.com', daysUsed: 5, daysLeft: 15}]);
   const resetData = () => {
-    // Here you will handle the data reset process
     setEmployees([]);
   };
   return (
