@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const Button = styled.button`
   padding: 10px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   border: none;
   border-radius: 5px;
   background-color: #007BFF;
@@ -26,12 +26,14 @@ const Button = styled.button`
 
 const ButtonDelete = styled.button`
   padding: 10px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   border: none;
   border-radius: 5px;
   background-color: #F01818;
   color: white;
   cursor: pointer;
+  align-items = center;
+  margin: 20px;
 
   &:hover {
     background-color: #B91616;
