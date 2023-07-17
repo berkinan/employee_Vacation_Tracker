@@ -9,6 +9,7 @@ const Container = styled.div`
   align-items: center;
   padding: 50px;
   background-color: #fafafa;
+  height: 400px;
 `;
 
 const Input = styled.input`
