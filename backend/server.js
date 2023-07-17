@@ -9,7 +9,7 @@ app.use(cors());
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'password',
+  password: '12061997',
   database: 'vacation_tracker',
   waitForConnections: true,
 });
