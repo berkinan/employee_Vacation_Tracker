@@ -35,7 +35,7 @@ const Button = styled.button`
 const EmployeeEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [employee, setEmployee] = useState(null);
+  const [employee, setEmployee] = useState({id: null, name: '', surname: '', email: '', daysUsed: 0, daysLeft: 0});
   const [days, setDays] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -65,7 +65,7 @@ const EmployeeEdit = () => {
 
   return (
     <Container>
-      <h1>{employee.email}</h1>
+      <h1>{employee.name} {employee.surname}</h1>
       <Input type="number" value={days} onChange={e => setDays(e.target.value)} />
       <Button onClick={saveChanges}>Save</Button>
     </Container>

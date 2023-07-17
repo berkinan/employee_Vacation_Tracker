@@ -24,6 +24,14 @@ const Button = styled.button`
   }
 `;
 
+const Input = styled.input`
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 300px;
+`;
+
 const Employee = styled.div`
   width: 300px;
   padding: 20px;
@@ -38,6 +46,7 @@ const EmployeeInfo = styled.p`
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -52,17 +61,42 @@ const EmployeeList = () => {
     fetchEmployees();
   }, []);
 
+  const resetData = async () => {
+    if (window.confirm("Are you sure that you want to reset all data?")) {
+      try {
+        await axios.delete('http://localhost:3000/reset');
+        setEmployees([]); // Clear the employees list on the client side
+      } catch (err) {
+        console.error('An error occurred while resetting the data.');
+      }
+    }
+  };
+
   return (
     <Container>
-      <Button onClick={() => window.location.reload()}>Reset Data</Button>
-      {employees.map(employee => (
-        <Employee key={employee.id}>
-          <EmployeeInfo>{employee.email}</EmployeeInfo>
-          <EmployeeInfo>Days used: {employee.days_used}</EmployeeInfo>
-          <EmployeeInfo>Days left: {employee.days_left}</EmployeeInfo>
-          <Button onClick={() => window.location.href = `/edit/${employee.id}`}>Edit</Button>
-        </Employee>
-      ))}
+      <Input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search..."
+      />
+      <Button onClick={resetData}>Reset Data</Button>
+      {employees
+        .filter((employee) =>
+          `${employee.name} ${employee.surname}`
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        )
+        .map((employee) => (
+          <Employee key={employee.id}>
+            <EmployeeInfo>{employee.name}</EmployeeInfo>
+            <EmployeeInfo>{employee.surname}</EmployeeInfo>
+            <EmployeeInfo>{employee.email}</EmployeeInfo>
+            <EmployeeInfo>Days used: {employee.days_used}</EmployeeInfo>
+            <EmployeeInfo>Days left: {employee.days_left}</EmployeeInfo>
+            <Button onClick={() => window.location.href = `/edit/${employee.id}`}>Edit</Button>
+          </Employee>
+        ))}
     </Container>
   );
 };

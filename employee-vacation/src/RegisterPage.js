@@ -37,7 +37,9 @@ const ErrorText = styled.p`
 `;
 
 const RegisterPage = () => {
-  const [email, setEmail] = useState('berkinan@sabanciuniv.edu');
+  const [name, setName] = useState('Name');
+  const [surname, setSurname] = useState('Surname');
+  const [email, setEmail] = useState('sample@kafein.com.tr');
   const [error, setError] = useState(null);
   const [isTutorialVisible, setTutorialVisible] = useState(true);
 
@@ -52,6 +54,8 @@ const RegisterPage = () => {
   const register = async () => {
     try {
       const response = await axios.post('http://localhost:3000/register', {
+        name,
+        surname,
         email,
       });
 
@@ -72,6 +76,8 @@ const RegisterPage = () => {
 
   return (
     <Container>
+      <Input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter employee's name" />
+      <Input type="text" value={surname} onChange={e => setSurname(e.target.value)} placeholder="Enter employee's surname" />
       <Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter employee's email" />
       <Button onClick={register}>Register</Button>
       {error && <ErrorText>{error}</ErrorText>}
