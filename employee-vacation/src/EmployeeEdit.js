@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -31,15 +32,37 @@ const Button = styled.button`
   }
 `;
 
-
-
-  
-const EmployeeEdit = ({ match }) => {
-  const [employee, setEmployee] = useState({id: 1, email: 'Berk İnan', daysUsed: 5, daysLeft: 15});
+const EmployeeEdit = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [employee, setEmployee] = useState(null);
   const [days, setDays] = useState(0);
-  const saveChanges = () => {
-    window.location.href = `/list`;
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEmployee = async () => {
+      const response = await axios.get(`http://localhost:3000/employees/${id}`);
+      setEmployee(response.data);
+      setDays(response.data.days_used);
+      setIsLoading(false);
+    };
+
+    fetchEmployee();
+  }, [id]);
+
+  const saveChanges = async () => {
+    await axios.put(`http://localhost:3000/edit/${id}`, { days });
+    navigate('/list');
   }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!employee) {
+    return <div>No employee data found</div>;
+  }
+
   return (
     <Container>
       <h1>{employee.email}</h1>

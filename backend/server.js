@@ -30,6 +30,17 @@ app.get('/employees', async (req, res) => {
   res.json(rows);
 });
 
+app.get('/employees/:id', async (req, res) => {
+  const id = req.params.id;
+  const [rows] = await pool.query('SELECT * FROM employees WHERE id = ?', [id]);
+  if (rows.length > 0) {
+    res.json(rows[0]);
+  } else {
+    res.status(404).send('Employee not found');
+  }
+});
+
+
 app.put('/edit/:id', async (req, res) => {
   const id = req.params.id;
   const days = req.body.days;

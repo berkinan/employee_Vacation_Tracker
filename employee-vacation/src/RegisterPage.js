@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import WelcomeTutorial from './WelcomeTutorial';
 
 const Container = styled.div`
   display: flex;
@@ -38,6 +39,15 @@ const ErrorText = styled.p`
 const RegisterPage = () => {
   const [email, setEmail] = useState('berkinan@sabanciuniv.edu');
   const [error, setError] = useState(null);
+  const [isTutorialVisible, setTutorialVisible] = useState(true);
+
+  useEffect(() => {
+    const tutorialShown = localStorage.getItem('tutorialShown');
+    if (!tutorialShown) {
+      setTutorialVisible(true);
+      localStorage.setItem('tutorialShown', 'true');
+    }
+  }, []);
 
   const register = async () => {
     try {
@@ -56,11 +66,16 @@ const RegisterPage = () => {
     }
   };
 
+  const closeTutorial = () => {
+    setTutorialVisible(false);
+  };
+
   return (
     <Container>
       <Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter employee's email" />
       <Button onClick={register}>Register</Button>
       {error && <ErrorText>{error}</ErrorText>}
+      {isTutorialVisible && <WelcomeTutorial onClose={closeTutorial} />} {}
     </Container>
   );
 };

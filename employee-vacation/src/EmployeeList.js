@@ -36,23 +36,30 @@ const EmployeeInfo = styled.p`
   margin-bottom: 10px;
 `;
 
-
-
 const EmployeeList = () => {
-  const [employees, setEmployees] = useState([{id: 1, email: 'berkinan@sabanciuniv.edu', daysUsed: 5, daysLeft: 15}, {id: 2, email: 'inan.berk.business@gmail.com', daysUsed: 0, daysLeft: 20}]);
-  const resetData = () => {
-    setEmployees([]);
-  };
-  const search = () => {};
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/employees');
+        setEmployees(response.data);
+      } catch (err) {
+        console.error('An error occurred while fetching the employees.');
+      }
+    };
+
+    fetchEmployees();
+  }, []);
+
   return (
     <Container>
-      <Button onClick={resetData}>Reset Data</Button>
-      <Button onClick={search}>Search</Button>
+      <Button onClick={() => window.location.reload()}>Reset Data</Button>
       {employees.map(employee => (
         <Employee key={employee.id}>
           <EmployeeInfo>{employee.email}</EmployeeInfo>
-          <EmployeeInfo>Days used: {employee.daysUsed}</EmployeeInfo>
-          <EmployeeInfo>Days left: {employee.daysLeft}</EmployeeInfo>
+          <EmployeeInfo>Days used: {employee.days_used}</EmployeeInfo>
+          <EmployeeInfo>Days left: {employee.days_left}</EmployeeInfo>
           <Button onClick={() => window.location.href = `/edit/${employee.id}`}>Edit</Button>
         </Employee>
       ))}
