@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import WelcomeTutorial from './WelcomeTutorial';
+import Cookies from 'js-cookie';
 
 const Container = styled.div`
   display: flex;
@@ -46,12 +47,17 @@ const RegisterPage = () => {
   const [existingUserId, setExistingUserId] = useState(null);
 
   useEffect(() => {
-    const tutorialShown = localStorage.getItem('tutorialShown');
+    const tutorialShown = Cookies.get('tutorialShown');
     if (!tutorialShown) {
       setTutorialVisible(true);
-      localStorage.setItem('tutorialShown', 'true');
+      Cookies.set('tutorialShown', 'true', { expires: 365 });
     }
   }, []);
+
+  const closeTutorial = () => {
+    setTutorialVisible(false);
+    Cookies.set('tutorialShown', 'true', { expires: 365 });
+  };
 
   const register = async () => {
     try {
@@ -76,10 +82,6 @@ const RegisterPage = () => {
   const editExistingUser = () => {
     window.location.href = `/edit/${existingUserId}`;
   }
-
-  const closeTutorial = () => {
-    setTutorialVisible(false);
-  };
 
   return (
     <Container>
