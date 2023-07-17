@@ -24,6 +24,20 @@ const Button = styled.button`
   }
 `;
 
+const ButtonDelete = styled.button`
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #F01818;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #B91616;
+  }
+`;
+
 const Input = styled.input`
   padding: 10px;
   margin-bottom: 20px;
@@ -32,16 +46,21 @@ const Input = styled.input`
   width: 300px;
 `;
 
-const Employee = styled.div`
-  width: 300px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
 `;
 
-const EmployeeInfo = styled.p`
-  margin-bottom: 10px;
+const Th = styled.th`
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+`;
+
+const Td = styled.td`
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 `;
 
 const EmployeeList = () => {
@@ -72,6 +91,17 @@ const EmployeeList = () => {
     }
   };
 
+  const deleteEmployee = async (id) => {
+    if (window.confirm("Are you sure you want to delete this employee?")) {
+      try {
+        await axios.delete(`http://localhost:3000/employees/${id}`);
+        setEmployees(employees.filter((employee) => employee.id !== id)); // Update the list on client side
+      } catch (err) {
+        console.error('An error occurred while deleting the employee.');
+      }
+    }
+  };
+
   return (
     <Container>
       <Input
@@ -81,22 +111,39 @@ const EmployeeList = () => {
         placeholder="Search..."
       />
       <Button onClick={resetData}>Reset Data</Button>
-      {employees
-        .filter((employee) =>
-          `${employee.name} ${employee.surname}`
-            .toLowerCase()
-            .includes(search.toLowerCase())
-        )
-        .map((employee) => (
-          <Employee key={employee.id}>
-            <EmployeeInfo>{employee.name}</EmployeeInfo>
-            <EmployeeInfo>{employee.surname}</EmployeeInfo>
-            <EmployeeInfo>{employee.email}</EmployeeInfo>
-            <EmployeeInfo>Days used: {employee.days_used}</EmployeeInfo>
-            <EmployeeInfo>Days left: {employee.days_left}</EmployeeInfo>
-            <Button onClick={() => window.location.href = `/edit/${employee.id}`}>Edit</Button>
-          </Employee>
-        ))}
+      <Table>
+        <thead>
+          <tr>
+            <Th>Name</Th>
+            <Th>Surname</Th>
+            <Th>Email</Th>
+            <Th>Days Used</Th>
+            <Th>Days Left</Th>
+            <Th>Actions</Th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees
+            .filter((employee) =>
+              `${employee.name} ${employee.surname}`
+                .toLowerCase()
+                .includes(search.toLowerCase())
+            )
+            .map((employee) => (
+              <tr key={employee.id}>
+                <Td>{employee.name}</Td>
+                <Td>{employee.surname}</Td>
+                <Td>{employee.email}</Td>
+                <Td>{employee.days_used}</Td>
+                <Td>{employee.days_left}</Td>
+                <Td>
+                  <Button onClick={() => window.location.href = `/edit/${employee.id}`}>Edit</Button>
+                  <ButtonDelete onClick={() => deleteEmployee(employee.id)}>Delete</ButtonDelete>
+                </Td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
     </Container>
   );
 };

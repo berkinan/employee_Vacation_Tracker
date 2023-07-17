@@ -53,5 +53,12 @@ app.delete('/reset', async (req, res) => {
   res.json({ success: true });
 });
 
+app.delete('/employees/:id', async (req, res) => {
+  const id = req.params.id;
+  await pool.query('DELETE FROM employees WHERE id = ?', [id]);
+  res.json({ success: true });
+});
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

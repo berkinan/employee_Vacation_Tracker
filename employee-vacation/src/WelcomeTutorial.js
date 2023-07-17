@@ -45,9 +45,9 @@ const WelcomeTutorial = ({ onClose }) => {
         <h2>Welcome to the Tracker</h2>
         <p>Here's how you can get started:</p>
         <ol>
-          <li>Step 1: Add an Employee</li>
-          <li>Step 2: Check the List</li>
-          <li>Step 3: Edit the Vacation</li>
+          <li>Add an Employee</li>
+          <li>Check the List</li>
+          <li>Edit the Vacation</li>
         </ol>
         <Button onClick={onClose}>Got it!</Button>
       </TutorialContent>
