@@ -112,7 +112,7 @@ const EmployeeList = () => {
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search..."
       />
-      <Button onClick={resetData}>Reset Data</Button>
+      <Button onClick={resetData}>Erase All Data</Button>
       <Table>
         <thead>
           <tr>
