@@ -91,7 +91,7 @@ const TopBar = () => {
         <Link to = "/register" >
           <Logo src="/logo.jpg" alt="Company Logo"/>x
         </Link>
-        <SiteName>Vacation Tracker</SiteName>
+        <SiteName>Vacation Tracker System</SiteName>
         <NavigationButton onClick={toggleNavigation}>☰</NavigationButton>
       </TopBarContainer>
 

@@ -35,14 +35,27 @@ const ErrorText = styled.p`
   color: red;
 `;
 
-
-
 const RegisterPage = () => {
   const [email, setEmail] = useState('berkinan@sabanciuniv.edu');
   const [error, setError] = useState(null);
-  const register = () => {
-    window.location.href = `/list`;
+
+  const register = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/register', {
+        email,
+      });
+
+      if (response.data.alreadyRegistered) {
+        setError('This email is already registered.');
+        return;
+      }
+
+      window.location.href = `/list`;
+    } catch (err) {
+      setError('An error occurred while registering. Please try again.');
+    }
   };
+
   return (
     <Container>
       <Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter employee's email" />
