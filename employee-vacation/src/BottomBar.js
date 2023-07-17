@@ -28,13 +28,13 @@ const BottomBar = () => {
     <BottomBarContainer>
       <Logo src="/logo2.png" alt="Logo" />
       <IconContainer>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <img src="/facebook.png" alt="Facebook" />
+        <a href="https://linkedin.com/company/kafein-software/" target="_blank" rel="noopener noreferrer">
+          <img src="/linkedin.png" alt="Linkedin" />
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://instagram.com/kafeintechnology/" target="_blank" rel="noopener noreferrer">
           <img src="/instagram.png" alt="Instagram" />
         </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://twitter.com/KafeinC" target="_blank" rel="noopener noreferrer">
           <img src="/twitter.png" alt="Twitter" />
         </a>
       </IconContainer>

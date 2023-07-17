@@ -84,7 +84,7 @@ const EmployeeList = () => {
     if (window.confirm("Are you sure that you want to reset all data?")) {
       try {
         await axios.delete('http://localhost:3000/reset');
-        setEmployees([]); // Clear the employees list on the client side
+        setEmployees([]); 
       } catch (err) {
         console.error('An error occurred while resetting the data.');
       }
@@ -95,7 +95,7 @@ const EmployeeList = () => {
     if (window.confirm("Are you sure you want to delete this employee?")) {
       try {
         await axios.delete(`http://localhost:3000/employees/${id}`);
-        setEmployees(employees.filter((employee) => employee.id !== id)); // Update the list on client side
+        setEmployees(employees.filter((employee) => employee.id !== id));
       } catch (err) {
         console.error('An error occurred while deleting the employee.');
       }
