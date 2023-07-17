@@ -35,7 +35,7 @@ const Button = styled.button`
 
   
 const EmployeeEdit = ({ match }) => {
-  const [employee, setEmployee] = useState({id: 1, email: 'dummyEmail@example.com', daysUsed: 5, daysLeft: 15});
+  const [employee, setEmployee] = useState({id: 1, email: 'Berk İnan', daysUsed: 5, daysLeft: 15});
   const [days, setDays] = useState(0);
   const saveChanges = () => {
     window.location.href = `/list`;

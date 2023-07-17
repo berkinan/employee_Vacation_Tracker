@@ -38,7 +38,7 @@ const ErrorText = styled.p`
 
 
 const RegisterPage = () => {
-  const [email, setEmail] = useState('dummyEmail@example.com');
+  const [email, setEmail] = useState('berkinan@sabanciuniv.edu');
   const [error, setError] = useState(null);
   const register = () => {
     window.location.href = `/list`;

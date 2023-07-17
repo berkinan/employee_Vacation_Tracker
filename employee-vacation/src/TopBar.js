@@ -88,7 +88,9 @@ const TopBar = () => {
   return (
     <>
       <TopBarContainer>
-        <Logo src="/logo.jpg" alt="Company Logo"/>
+        <Link to = "/register" >
+          <Logo src="/logo.jpg" alt="Company Logo"/>x
+        </Link>
         <SiteName>Vacation Tracker</SiteName>
         <NavigationButton onClick={toggleNavigation}>☰</NavigationButton>
       </TopBarContainer>

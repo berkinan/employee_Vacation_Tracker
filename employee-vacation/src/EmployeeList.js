@@ -39,13 +39,15 @@ const EmployeeInfo = styled.p`
 
 
 const EmployeeList = () => {
-  const [employees, setEmployees] = useState([{id: 1, email: 'dummyEmail@example.com', daysUsed: 5, daysLeft: 15}]);
+  const [employees, setEmployees] = useState([{id: 1, email: 'berkinan@sabanciuniv.edu', daysUsed: 5, daysLeft: 15}, {id: 2, email: 'inan.berk.business@gmail.com', daysUsed: 0, daysLeft: 20}]);
   const resetData = () => {
     setEmployees([]);
   };
+  const search = () => {};
   return (
     <Container>
       <Button onClick={resetData}>Reset Data</Button>
+      <Button onClick={search}>Search</Button>
       {employees.map(employee => (
         <Employee key={employee.id}>
           <EmployeeInfo>{employee.email}</EmployeeInfo>
