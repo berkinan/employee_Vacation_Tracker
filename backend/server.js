@@ -44,7 +44,7 @@ app.get('/employees/:id', async (req, res) => {
 app.put('/edit/:id', async (req, res) => {
   const id = req.params.id;
   const days = req.body.days;
-  await pool.query('UPDATE employees SET days_used = ?, days_left = 20 - ? WHERE id = ?', [days, days, id]);
+  await pool.query('UPDATE employees SET days_used = ?, days_left = days_left - ? WHERE id = ?', [days, days, id]);
   res.json({ success: true });
 });
 
