@@ -8,9 +8,6 @@ const BottomBarContainer = styled.div`
   padding: 20px;
   background-color: #FFFFFF;
   position: bottom;
-  bottom: 0;
-  left: 0;
-  right: 0;
 `;
 
 const IconContainer = styled.div`

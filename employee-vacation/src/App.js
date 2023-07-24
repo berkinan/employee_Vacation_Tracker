@@ -5,6 +5,7 @@ import ListPage from './EmployeeList';
 import EditPage from './EmployeeEdit';
 import TopBar from './TopBar';
 import BottomBar from './BottomBar';
+import LoginPage from './loginPage';
 
 const AppRouter = () => {
   const [isAtBottom, setIsAtBottom] = useState(false);
@@ -35,6 +36,7 @@ const AppRouter = () => {
       <TopBar />
       <div className="content">
         <Routes>
+        <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/list" element={<ListPage />} />
           <Route path="/edit/:id" element={<EditPage />} />
