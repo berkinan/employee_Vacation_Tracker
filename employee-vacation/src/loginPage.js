@@ -63,7 +63,7 @@ const LoginPage = () => {
       <Input type ="name" value={name} onChange= {e => setName(e.target.value)} placeholder ="Enter your name" />
       <Input type="surname" value={surname} onChange={e => setSurname(e.targer.value)} placeholder = "Enter your surname" />
       <Input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter your password" />
-      <Button onClick={handleLogin}>Register</Button>
+      <Button onClick={handleRegister}>Register</Button>
     </Container>
   );
 };
