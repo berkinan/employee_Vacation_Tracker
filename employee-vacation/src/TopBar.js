@@ -29,9 +29,9 @@ const SiteName = styled.h2`
 const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   position: fixed;
-  top: 0;
+  top: 25;
   right: ${props => props.isOpen ? '0' : '-300px'};
   height: 100%;
   width: 200px;

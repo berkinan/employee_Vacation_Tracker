@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const TutorialContainer = styled.div`
   position: fixed;
-  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
@@ -28,13 +27,13 @@ const Button = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007BFF;
+  background-color: #60DF1C;
   color: white;
   cursor: pointer;
   margin-top: 20px;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #3F9710;
   }
 `;
 

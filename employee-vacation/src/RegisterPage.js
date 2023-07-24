@@ -23,7 +23,7 @@ const Input = styled.input`
 
 const Button = styled.button`
   padding: 10px 20px;
-  border: none;
+  border: 0px;
   border-radius: 5px;
   background-color: #007BFF;
   color: white;
@@ -33,6 +33,8 @@ const Button = styled.button`
     background-color: #0056b3;
   }
 `;
+
+
 
 const ErrorText = styled.p`
   color: red;
@@ -101,7 +103,7 @@ const RegisterPage = () => {
       {error && <ErrorText>{error}</ErrorText>}
       {error && (
         <div>
-          <Button onClick={editExistingUser}>Edit Existing User</Button>
+          <Button onClick={editExistingUser}>Edit Existing User</Button> &nbsp;&nbsp;&nbsp;
           <Button onClick={() => setError(null)}>Register New User</Button>
         </div>
       )}
