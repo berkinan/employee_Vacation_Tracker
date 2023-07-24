@@ -1,3 +1,13 @@
+/*
+  Developer: Berk İnan
+  Project: Employee Vacation Tracker Website
+  Position: Intern
+  Github: https://github.com/berkinan/employee_Vacation_Tracker (Currently Private)
+  Version: 0.4
+  License: MIT
+  ***This project is proprietary software and is bound by the terms and conditions of Kafein Technology Solutions.***
+*/
+
 import React, { useEffect, useRef, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RegisterPage from './RegisterPage';

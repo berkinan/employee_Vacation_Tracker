@@ -24,6 +24,22 @@ const Button = styled.button`
   }
 `;
 
+const EraseButton = styled.button`
+  padding : 10px 20px;
+  margin-bottom: 5px;
+  display: flex;
+  margin-left: auto;
+  border: none;
+  border-radius: 5px;
+  background-color: #DF8A0E;
+  color: white;
+  cursor: pointer;
+
+  &:hover{
+    background-color: #955D0A
+  }
+`;
+
 const ButtonDelete = styled.button`
   padding: 10px 20px;
   margin-bottom: 5px;
@@ -112,7 +128,7 @@ const EmployeeList = () => {
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search..."
       />
-      <Button onClick={resetData}>Erase All Data</Button>
+      <EraseButton onClick={resetData}>Erase All Data</EraseButton>
       <Table>
         <thead>
           <tr>
