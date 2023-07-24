@@ -34,31 +34,36 @@ const Button = styled.button`
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     try {
       const response = await axios.post('http://localhost:3000/login', {
         email,
+        name,
+        surname,
         password,
       });
 
       if (response.data.success) {
-        // Redirect to the employee register page
         window.location.href = '/register';
       } else {
-        alert('Invalid email or password. Please try again.');
+        alert('Invalid input, Please try again');
       }
     } catch (err) {
-      alert('An error occurred while logging in. Please try again.');
+      alert('An error occurred while register process.');
     }
   };
 
   return (
     <Container>
       <Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter your email" />
+      <Input type ="name" value={name} onChange= {e => setName(e.target.value)} placeholder ="Enter your name" />
+      <Input type="surname" value={surname} onChange={e => setSurname(e.targer.value)} placeholder = "Enter your surname" />
       <Input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Enter your password" />
-      <Button onClick={handleLogin}>Log in</Button>
+      <Button onClick={handleLogin}>Register</Button>
     </Container>
   );
 };
