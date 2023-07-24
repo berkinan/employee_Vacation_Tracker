@@ -18,7 +18,7 @@ const Logo = styled.img`
   transform: scale(1.3);
 `;
 
-const SiteName = styled.h2`
+const SiteName = styled.h1`
   margin: 0;
   position: absolute;
   left: 50%;

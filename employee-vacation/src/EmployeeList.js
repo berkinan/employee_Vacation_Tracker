@@ -122,6 +122,7 @@ const EmployeeList = () => {
   
   return (
     <Container>
+      <h4>Search for Employee</h4>
       <Input
         type="text"
         value={search}
@@ -129,6 +130,7 @@ const EmployeeList = () => {
         placeholder="Search..."
       />
       <EraseButton onClick={resetData}>Erase All Data</EraseButton>
+
       <Table>
         <thead>
           <tr>
