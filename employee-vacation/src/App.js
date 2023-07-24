@@ -6,6 +6,8 @@
   Version: 0.4
   License: MIT
   ***This project is proprietary software and is bound by the terms and conditions of Kafein Technology Solutions.***
+
+  For more information please visit the Github Page.
 */
 
 import React, { useEffect, useRef, useState } from 'react';
