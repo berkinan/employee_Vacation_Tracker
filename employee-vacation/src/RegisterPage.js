@@ -48,9 +48,9 @@ const handleFailure = (err) => {
 };
 
 const RegisterPage = () => {
-  const [name, setName] = useState('Name');
-  const [surname, setSurname] = useState('Surname');
-  const [email, setEmail] = useState('sample@kafein.com.tr');
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
   const [isTutorialVisible, setTutorialVisible] = useState(true);
   const [existingUserId, setExistingUserId] = useState(null);
