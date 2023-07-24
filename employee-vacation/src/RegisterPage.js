@@ -38,6 +38,15 @@ const ErrorText = styled.p`
   color: red;
 `;
 
+const handleSuccess = (res) => {
+  console.log(res);
+};
+
+const handleFailure = (err) => {
+ 
+  console.log(err);
+};
+
 const RegisterPage = () => {
   const [name, setName] = useState('Name');
   const [surname, setSurname] = useState('Surname');
