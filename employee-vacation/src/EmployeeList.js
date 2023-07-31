@@ -81,22 +81,48 @@ const Td = styled.td`
   border-bottom: 1px solid #ddd;
 `;
 
+
+
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [search, setSearch] = useState("");
+  const [sortDirection, setSortDirection] = useState('asc');
 
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
         const response = await axios.get('http://localhost:3000/employees');
-        setEmployees(response.data);
+        const sortedEmployees = [...response.data].sort((a, b) => {
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
+          
+          if (sortDirection === 'asc') {
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+          } else {
+            if (nameA > nameB) {
+              return -1;
+            }
+            if (nameA < nameB) {
+              return 1;
+            }
+          }
+  
+          return 0;
+        });
+  
+        setEmployees(sortedEmployees);
       } catch (err) {
         console.error('An error occurred while fetching the employees.');
       }
     };
-
+  
     fetchEmployees();
-  }, []);
+  }, [sortDirection]);
 
   const resetData = async () => {
     if (window.confirm("Are you sure that you want to reset all data?")) {
@@ -134,7 +160,7 @@ const EmployeeList = () => {
       <Table>
         <thead>
           <tr>
-            <Th>Name</Th>
+            <Th onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}>Name {sortDirection === 'asc' ? '↑' : '↓'}</Th>
             <Th>Surname</Th>
             <Th>Email</Th>
             <Th>Days Used</Th>
