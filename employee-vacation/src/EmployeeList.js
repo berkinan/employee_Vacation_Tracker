@@ -190,24 +190,22 @@ const EmployeeList = () => {
   
   return (
     <Container>
-      <rowContainer>
-        <h4>Search for Employee</h4>
-        <Input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search..."
-        />
-        <h5>Department Filter</h5>
-        <Select value={filterDepartment} onChange={(e) => setFilterDepartment(e.target.value)}>
-          <option value="">All Departments</option>
-          <option value="HR">Human Resources</option>
-          <option value="IT">Information Technology</option>
-          <option value="SD">Software Development</option>
-          <option value="CS">Cyber Security</option>
-          {}
-        </Select>
-      </rowContainer>
+      <h4>Search for Employee</h4>
+      <Input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search..."
+      />
+      <h5>Department Filter</h5>
+      <Select value={filterDepartment} onChange={(e) => setFilterDepartment(e.target.value)}>
+        <option value="">All Departments</option>
+        <option value="HR">Human Resources</option>
+        <option value="IT">Information Technology</option>
+        <option value="SD">Software Development</option>
+        <option value="CS">Cyber Security</option>
+        {}
+      </Select>
       <EraseButton onClick={resetData}>Erase All Data</EraseButton>
 
       <Table>
