@@ -10,6 +10,12 @@ const Container = styled.div`
   background-color: #fafafa;
 `;
 
+const rowContainer = styled.div`
+  align-items: center;
+  padding: 50px;
+  background color: #fafafa;
+`;
+
 const Button = styled.button`
   padding: 10px 20px;
   margin-bottom: 5px;
@@ -184,19 +190,24 @@ const EmployeeList = () => {
   
   return (
     <Container>
-      <h4>Search for Employee</h4>
-      <Input
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search..."
-      />
-      <Select value={filterDepartment} onChange={(e) => setFilterDepartment(e.target.value)}>
-        <option value="">All Departments</option>
-        <option value="HR">Human Resources</option>
-        <option value="IT">Information Technology</option>
-        {}
-      </Select>
+      <rowContainer>
+        <h4>Search for Employee</h4>
+        <Input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search..."
+        />
+        <h5>Department Filter</h5>
+        <Select value={filterDepartment} onChange={(e) => setFilterDepartment(e.target.value)}>
+          <option value="">All Departments</option>
+          <option value="HR">Human Resources</option>
+          <option value="IT">Information Technology</option>
+          <option value="SD">Software Development</option>
+          <option value="CS">Cyber Security</option>
+          {}
+        </Select>
+      </rowContainer>
       <EraseButton onClick={resetData}>Erase All Data</EraseButton>
 
       <Table>

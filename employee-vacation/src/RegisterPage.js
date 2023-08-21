@@ -26,7 +26,7 @@ const Select = styled.select`
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  width: 300px;
+  width: 322px;
 `;
 
 const Button = styled.button`
@@ -89,16 +89,16 @@ const RegisterPage = () => {
     }
 
     try {
-      console.log('Registering:', name, surname, email, department); // Logging data before sending the request
+      console.log('Registering:', name, surname, email, department);
 
       const response = await axios.post('http://localhost:3000/register', {
         name,
         surname,
         email,
-        departmentId: department.split('-')[0], // Extracting department ID from the selected option
+        departmentId: department.split('-')[0],
       });
 
-      console.log('Response:', response.data); // Logging the response from the server
+      console.log('Response:', response.data);
 
       if (response.data.alreadyRegistered) {
         setExistingUserId(response.data.id);
@@ -109,7 +109,7 @@ const RegisterPage = () => {
       window.location.href = `/list`;
     } catch (err) {
       setError('An error occurred while registering. Please try again.');
-      console.error('Registration Error:', err); // Logging the error
+      console.error('Registration Error:', err);
     }
   };
 
@@ -126,6 +126,8 @@ const RegisterPage = () => {
         <option value="">Select department</option>
         <option value="1">Human Resources</option>
         <option value="2">Information Technology</option>
+        <option value="3">Software Development</option>
+        <option value="4">Cyber Security</option>
       </Select>
       <Button onClick={register}>Register</Button>
       {error && <ErrorText>{error}</ErrorText>}
