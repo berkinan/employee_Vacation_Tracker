@@ -24,6 +24,20 @@ const Button = styled.button`
   }
 `;
 
+const ResetButton = styled.button`
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #B91064;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #8B0E4C;
+  }
+`;
+
 const EraseButton = styled.button`
   padding : 10px 20px;
   margin-bottom: 5px;
@@ -81,14 +95,12 @@ const Td = styled.td`
   border-bottom: 1px solid #ddd;
 `;
 
-// ... (imports)
-
 const Select = styled.select`
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  width: 300px;
+  width: 320px;
 `;
 
 const EmployeeList = () => {
@@ -183,7 +195,7 @@ const EmployeeList = () => {
         <option value="">All Departments</option>
         <option value="HR">Human Resources</option>
         <option value="IT">Information Technology</option>
-        {/* Add more departments here */}
+        {}
       </Select>
       <EraseButton onClick={resetData}>Erase All Data</EraseButton>
 
@@ -220,7 +232,7 @@ const EmployeeList = () => {
                 <Td>
                   <Button onClick={() => window.location.href = `/edit/${employee.id}`}>Edit</Button>
                   <ButtonDelete onClick={() => deleteEmployee(employee.id)}>Delete</ButtonDelete>
-                  <Button onClick={() => resetEmployeeData(employee.id)}>Reset Days</Button>
+                  <ResetButton onClick={() => resetEmployeeData(employee.id)}>Reset Days</ResetButton>
                 </Td>
               </tr>
             ))}
